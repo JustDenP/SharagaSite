@@ -1,0 +1,23 @@
+﻿@model ShopApplication.Users
+
+@{
+    ViewBag.Title = "EditConfig";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Редактирование</h2>
+
+    <form method="post" action="@Url.Action("Edit")">
+        <div style="width: 400px">
+            <input class="form-control mr-sm-2" type="number" placeholder="ID" name="UserId" min="1" value="@Model.Id" /><br />
+            <input class="form-control mr-sm-2" type="text" placeholder="Name" name="Name" /><br />
+            <input class="form-control mr-sm-2" type="number" placeholder="Age" min="10" name="Age" /><br />
+            <input class="form-control mr-sm-2" type="text" placeholder="Description" name="Description" /><br />
+        </div>
+        <button type="submit" class="btn btn-danger">Редактировать</button><br />
+    </form>
+    <br />
+    <a href="@Url.Action("Index")" class="btn btn-primary">К списку пользователей</a>
+</div>
+
+

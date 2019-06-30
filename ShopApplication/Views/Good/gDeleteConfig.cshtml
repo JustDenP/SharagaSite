@@ -1,0 +1,27 @@
+﻿@model ShopApplication.Goods
+
+@{
+    ViewBag.Title = "gDeleteConfig";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+
+    @if (Model == null)
+    {
+        <h2>Удаление товара.</h2>
+        <h4>Не удалось найти товар.</h4>
+    }
+    else
+    {
+        <h2>Удаление @Model.Name</h2>
+        <h4>Вы действительно желаете удалить товар с именем @Model.Name ?</h4>
+
+        <form method="post" action="@Url.Action("gDelete")">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <button type="submit" class="btn btn-danger">Удалить</button>
+        </form>
+    }
+    </br>
+    <a href="@Url.Action("Good")" class="btn btn-primary">К списку товаров</a>
+</div>
+

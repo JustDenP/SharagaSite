@@ -1,0 +1,27 @@
+﻿@model ShopApplication.Users
+
+@{
+    ViewBag.Title = "DeleteConfig";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+
+        @if (Model == null)
+        {
+            <h2>Удаление пользователя.</h2>
+            <h4>Не удалось найти пользователя.</h4>
+        }
+        else
+        {
+            <h2>Удаление @Model.Name</h2>
+            <h4>Вы действительно желаете удалить пользователя с именем @Model.Name ?</h4>
+
+            <form method="post" action="@Url.Action("Delete")">
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
+        }
+        </br>
+        <a href="@Url.Action("Index")" class="btn btn-primary">К списку пользователей</a>
+    </div>

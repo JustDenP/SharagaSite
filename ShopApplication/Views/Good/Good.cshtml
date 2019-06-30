@@ -1,0 +1,45 @@
+﻿@model System.Collections.Generic.List<ShopApplication.Goods>
+@{
+    ViewBag.Title = "Good";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Список Товаров</h2>
+
+    <div class="row">
+        <div class="col-lg-12 text-right mb-3">
+            <a class="btn btn-success pull-right" href="@Url.Action("gAddConfig")">Добавить</a>
+        </div>
+        <table class="table table-striped table-hover ">
+
+            @using (var context = new StoreEntities3())
+            {
+
+                var table = context.Goods.OrderBy(x => x.Id).ToList();
+
+                <td><strong>Id</strong></td>
+                <td><strong>Name</strong></td>
+                <td><strong>Description</strong></td>
+                <td><strong>Cost</strong></td>
+                <td><strong>Action</strong></td>
+
+                foreach (var item in table)
+                {
+                    <tr>
+                        @{
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td>@item.Cost</td>
+                            <td>
+                                <a href=@Url.Action("gDeleteConfig", new {GoodId = item.Id})>Удалить</a><br />
+                                <a class="btn btn-danger" href="@Url.Action("gEditConfig", new {GoodId = item.Id})">Редактировать</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model ShopApplication.Goods
+
+@{
+    ViewBag.Title = "gEditConfig";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Редактирование</h2>
+
+    <form method="post" action="@Url.Action("gEdit")">
+        <div style="width: 400px">
+            <input class="form-control mr-sm-2" type="number" placeholder="ID" name="GoodId" min="1" value="@Model.Id" /><br />
+            <input class="form-control mr-sm-2" type="text" placeholder="Name" name="Name" /><br />
+            <input class="form-control mr-sm-2" type="text" placeholder="Description" name="Description" /><br />
+            <input class="form-control mr-sm-2" type="number" placeholder="Cost" min="1" name="Cost" /><br />
+        </div>
+        <button type="submit" class="btn btn-danger">Редактировать</button><br />
+    </form>
+    <br />
+    <a href="@Url.Action("Good")" class="btn btn-primary">К списку товаров</a>
+</div>
+
